@@ -60,15 +60,15 @@ namespace DNStest {
         WSADATA wsaData;
         while (WSAStartup(MAKEWORD(2, 2), &wsaData)) {
             puts("WSA startup error. Enter 'Y' to retry or enter 'N' to exit.");
-            char c = getchar();
-            while (c != 'Y' && c != 'y' && c != 'N' && c != 'n')c = getchar();
+            char c = getch();
+            while (c != 'Y' && c != 'y' && c != 'N' && c != 'n')c = getch();
             if (c == 'N' || c == 'n')exit(1);
         }
         SOCKET sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
         while (sock == INVALID_SOCKET) {
             wprintf(L"socket function failed with error = %d. Enter 'Y' to retry or enter 'N' to exit.\n", WSAGetLastError());
-            char c = getchar();
-            while (c != 'Y' && c != 'y' && c != 'N' && c != 'n')c = getchar();
+            char c = getch();
+            while (c != 'Y' && c != 'y' && c != 'N' && c != 'n')c = getch();
             if (c == 'N' || c == 'n') {
                 WSACleanup();
                 exit(1);
@@ -77,8 +77,8 @@ namespace DNStest {
         }
         while (setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, (char*)&time_limit, 4) == SOCKET_ERROR) {
             wprintf(L"set sockopt SNDTIMEO failed with error: %u. Enter 'Y' to retry or enter 'N' to exit.\n", WSAGetLastError());
-            char c = getchar();
-            while (c != 'Y' && c != 'y' && c != 'N' && c != 'n')c = getchar();
+            char c = getch();
+            while (c != 'Y' && c != 'y' && c != 'N' && c != 'n')c = getch();
             if (c == 'N' || c == 'n') {
                 WSACleanup();
                 exit(1);
@@ -86,8 +86,8 @@ namespace DNStest {
         }
         while (setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (char*)&time_limit, 4) == SOCKET_ERROR) {
             wprintf(L"set sockopt RCVTIMEO failed with error: %u. Enter 'Y' to retry or enter 'N' to exit.\n", WSAGetLastError());
-            char c = getchar();
-            while (c != 'Y' && c != 'y' && c != 'N' && c != 'n')c = getchar();
+            char c = getch();
+            while (c != 'Y' && c != 'y' && c != 'N' && c != 'n')c = getch();
             if (c == 'N' || c == 'n') {
                 WSACleanup();
                 exit(1);

@@ -14,6 +14,7 @@
 #include <map>
 #include <algorithm>
 #include <stdlib.h>
+#include <conio.h>
 #pragma comment(lib, "IPHLPAPI.lib")
 #pragma comment(lib, "ws2_32.lib")
 #include "filesSet.h"

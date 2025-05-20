@@ -1,6 +1,7 @@
 ﻿#include "DNStest.h"
 std::map<std::string,std::pair<std::string, std::vector<std::string>>> Ads;
 void Show_Adapters() {
+    Ads = DNStest::DNS_search();
     printf("Amount of your adapters using IPv4 DNS server:%lld\nYour Adapters:\n", Ads.size());
     for (auto &i : Ads) {
         printf(("\n\tName: " + i.first + "\n\tDescription: " + i.second.first + "\n\tAmount of DNS servers: %lld\n").c_str(), i.second.second.size());
@@ -15,7 +16,7 @@ int main() {
     Ads = DNStest::DNS_search();
     puts("Adapters scan done\n");
     while (1) {
-        puts("\nEnter \"adapters\"to view your adapters using IPv4 DNS server.\nEnter \"rescan\" to re-scan your adapters.\nEnter \"setDNS\" to test DNS response speed and switch DNS.\nEnter \"modifyWEB\" to modify the websites used to test.\nEnter \"modifyDNS\" to modify the DNS servers address to choose.\nEnter \"exit\" to exit.");
+        puts("\nEnter \"adapters\"to view your adapters using IPv4 DNS server.\nEnter \"setDNS\" to test DNS response speed and switch DNS.\nEnter \"modifyWEB\" to modify the websites used to test.\nEnter \"modifyDNS\" to modify the DNS servers address to choose.\nEnter \"exit\" to exit.");
         std::string op;
         char c = getchar();
         while ((c < 'a' || c>'z') && (c < 'A' && c>'Z'))c = getchar();
@@ -26,11 +27,6 @@ int main() {
         }
         if (op == "exit")break;
         if (op == "adapters")Show_Adapters();
-        else if (op == "rescan") {
-            puts("Scanning your adapters...");
-            Ads = DNStest::DNS_search();
-            puts("Adapters scan done\n");
-        }
         else if (op == "setdns") {
             puts("Testing DNS response speed...");
             std::vector<std::pair<std::string, std::pair<double, double> > > ans = DNStest::tests(1);
