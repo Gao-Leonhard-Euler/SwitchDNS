@@ -24,6 +24,9 @@
     <ClCompile Include="SwitchDNS.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="app_frame.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DNStest.h">
@@ -33,6 +36,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="includes_lib.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="app_frame.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

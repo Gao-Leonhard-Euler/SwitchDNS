@@ -19,13 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="app_frame.cpp" />
     <ClCompile Include="DNStest.cpp" />
     <ClCompile Include="filesSet.cpp" />
     <ClCompile Include="SwitchDNS.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="app_frame.h" />
     <ClInclude Include="DNStest.h" />
     <ClInclude Include="filesSet.h" />
+    <ClInclude Include="includes_lib.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +94,20 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(wxWidgetsIncludePath);$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(wxWidgetsIncludePath);$(ExternalIncludePath)</ExternalIncludePath>
+    <PublicIncludeDirectories>
+    </PublicIncludeDirectories>
+    <PublicModuleDirectories>
+    </PublicModuleDirectories>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(wxWidgetsIncludePath);$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(wxWidgetsIncludePath);$(ExternalIncludePath)</ExternalIncludePath>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -133,11 +150,16 @@
       <SupportJustMyCode>false</SupportJustMyCode>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(wxWidgetsIncludePath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <AdditionalLibraryDirectories>$(wxWidgetsIncludePath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>wxpngd.lib;wxjpegd.lib;wxmsw32ud_media.lib;wxmsw32ud_propgrid.lib;wxregexud.lib;wxmsw32ud_qa.lib;wxmsw32ud_ribbon.lib;wxbase32ud.lib;wxmsw32ud_richtext.lib;wxbase32ud_net.lib;wxmsw32ud_adv.lib;wxmsw32ud_stc.lib;wxbase32ud_xml.lib;wxmsw32ud_aui.lib;wxmsw32ud_webview.lib;wxmsw32ud_core.lib;wxmsw32ud_xrc.lib;wxexpatd.lib;wxmsw32ud_gl.lib;wxzlibd.lib;wxmsw32ud_html.lib;wxscintillad.lib;wxtiffd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <Version>1.0</Version>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -153,6 +175,8 @@
       <Optimization>MaxSpeed</Optimization>
       <DebugInformationFormat>None</DebugInformationFormat>
       <WholeProgramOptimization>false</WholeProgramOptimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(wxWidgetsIncludePath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -160,6 +184,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <AdditionalLibraryDirectories>$(wxWidgetsIncludePath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>wxpng.lib;wxjpeg.lib;wxmsw32u_media.lib;wxmsw32u_propgrid.lib;wxregexu.lib;wxmsw32u_qa.lib;wxmsw32u_ribbon.lib;wxbase32u.lib;wxmsw32u_richtext.lib;wxbase32u_net.lib;wxmsw32u_adv.lib;wxmsw32u_stc.lib;wxbase32u_xml.lib;wxmsw32u_aui.lib;wxmsw32u_webview.lib;wxmsw32u_core.lib;wxmsw32u_xrc.lib;wxexpat.lib;wxmsw32u_gl.lib;wxzlib.lib;wxmsw32u_html.lib;wxscintilla.lib;wxtiff.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <Version>1.0</Version>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
